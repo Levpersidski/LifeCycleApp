@@ -14,6 +14,6 @@ class YellowViewController: UIViewController {
         let dvc = segue.destination as! GreenViewController
         dvc.someProperties = "someProperties"
     }
-
+// Здесь мы передаем значение someProperties на второй экран. Для того что бы понять в какой собственно момент происходит инициализация обычных свойств класса
 }
 

@@ -40,6 +40,7 @@ class OrangeViewController: UIViewController {
     // Вызывается когда вью выгружается из памяти
     deinit {
         printMessage()
+         // данный метод обратная сторона viewDidLoad, наоборот сообщает что вью был выгружен из памяти. Данный метод вызвать невозможно, он вызывается автоматически
     }
     
     @IBAction func close(_ sender: UIButton) {

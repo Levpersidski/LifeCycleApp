@@ -14,31 +14,57 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Вызывается сразу после метода application didFinishLaunchingWithOptions
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
-//        window = UIWindow(windowScene: windowScene)
-//        window?.rootViewController = UINavigationController(rootViewController: RootViewController())
-//        UIView.appearance().tintColor = .red
-//        UINavigationBar.appearance().barTintColor = .green
-//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.red]
+//        window = UIWindow(windowScene: windowScene) // для начала нужно инициализировать свойство window так как мы работаем без сториборда и инициализируем его windowScene который у нас инициализирован выше это свойство нам нужно что бы ниже определить стартовый вью контроллер
+        
+//        window?.rootViewController = UINavigationController(rootViewController: RootViewController()) //определяем стартовый вью контроллер rootViewController и он будет у нас с навигейшен баром так как мы использовали переход через  UINavigationController
+//        UIView.appearance().tintColor = .red // теперь у нас заголовок экрана будет красным
+//        UINavigationBar.appearance().barTintColor = .green // тут мы меняем цвета для кнопок в NavigationBar
+//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.red] // меняем цвет текста в NavigationBar
+        
+        /*
+         данный метод вызывается первым, В этом методе можно определять интерфейс всего приложения в зависимости от типа устройства на котором запущенно это приложение.
+         Так же можно определять стартовый вью контроллер если работаем без сториборда
+         Так же здесь происходит инициализация пуш уведомлений, запрос на подтверждение пользователем желания получать пуш уведомления создается в этом методе
+         Та же в этом методе происходит загрузка первичных данных из базы( например когда мы скачиваем приложение и нам показывают демо режим приложения с его возможностями)
+         Та же можно проводить любую работу с интерфейсом всего приложения:
+         менять цвет навигейшен бара, менять цвет заголовка что бы не делать это в каждом вью контроллере по отдельности
+         Например у нас есть приложение в котором навигейшен бар был на всех  экранах определенного цвета, шрифт определенного цвета.
+         Можно это дублировать в каждом вью контроллере
+         Можно создать шаблон навигейшен контроллера где все это прописанно
+         Либо реализовать в этом методе(выше)
+         
+         
+         */
     }
     
     // Вызывается перед перeходом приложения в активное состояние
     func sceneWillEnterForeground(_ scene: UIScene) {
         print(#function)
+        /*
+         Этот метод используется для отмены изменений выполненных при входе в фоновый режим, Когда мы входим в фоновый режим нужно что то остановить и  запустить это когда возвращаемся в активный (когда просто сворачиваем приложение не закрывая его уходим в фоновый режим)
+         */
     }
     
     // Переход приложения в фазу активного состояния
-    func sceneDidBecomeActive(_ scene: UIScene) {
+    func sceneDidBecomeActive(_ scene: UIScene) { // вызов данного метода происходит при  запуске приложения, ну и так же при возврате приложения из фонового режима
         print(#function)
+        /*
+          если мы допустим играем и нам позвонили, игра стала на паузу, и после завершения звонка при возвращении  срабатывает как раз этот метод
+         */
     }
     
     // Вызывается перед переходом приложения в фоновый режим
     func sceneWillResignActive(_ scene: UIScene) {
         print(#function)
+        /*
+         В данном методе останавливаются какие либо задачи, ставятся на паузу игры, проигрывание видео
+         */
     }
 
-    // Вызывается после перехода приложения в фоновый режим
+    // Вызывается после перехода приложения в фоновый режим (когда уже случился факт ухода приложения в фоновый режим)
     func sceneDidEnterBackground(_ scene: UIScene) {
         print(#function)
+        // метод используется для обнуления общих ресурсов, анулируются таймеры, сохранение  сведений для последующего восстановления
     }
 }
 
